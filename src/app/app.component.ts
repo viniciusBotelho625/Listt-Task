@@ -5,7 +5,7 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-root',
   imports: [RouterOutlet],
   template: `
-    1<router-outlet></router-outlet>2`
+    <router-outlet></router-outlet>`
 })
 export class AppComponent {
   title = 'list-task';
