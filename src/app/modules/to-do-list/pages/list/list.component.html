@@ -1,20 +1,28 @@
-<div class="container">
- 
-
- @if (addItem()) {
-  <button class="btn btn-primary" (click)="addItem.set(false)">
-    Crie uma lista de tarefas
-  </button>
- } @else {
-  <div>
-    <label class="input-label-text" for="inputValue">
-      <input type="text"placeholder="Adicione um novo item" autofocus id="inputValue"/>
-
-      <button class="btn btn-primary-circle" title="Adicione um novo item">
-        
-      </button>
-    </label>
+@if (!getListItems().length) {
+  <div class="container">
+    @if (addItem()) {
+     <button class="btn btn-primary" (click)="addItem.set(false)">
+       Crie uma lista de tarefas
+     </button>
+    } @else {
+     <app-input-add-item 
+       [inputListItems]="getListItems()"
+       (outputAddListItems)="getIputAndAddItem($event)"
+     />
+    }
   </div>
- }
-  
-</div>
+} @else {
+  <app-input-add-item 
+    [inputListItems]="getListItems()"
+    (outputAddListItems)="getIputAndAddItem($event)"
+  />
+
+  <main class="container">
+
+  </main>
+
+  <footer>
+    <button class="btn btn-danger" (click)="deleteAllItems()">Deletar todos itens</button>
+  </footer>
+} 
+
